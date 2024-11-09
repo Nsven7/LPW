@@ -9,6 +9,7 @@ function calculAmount(solde, depot, retrait, TAUXINTERET) {
     if (depot !== null && depot !== undefined) {
         solde += depot;
         let interest = solde * TAUXINTERET;
+        solde += interest;
         historiqueOperations[i++] = `Vous avez déposé : ${depot} euros`;
         console.log(`Vous avez déposé : ${depot} euros`);
         console.log(`Intérêts annuels de ${TAUXINTERET}% ajoutés. Montant : ${interest} euros`);
@@ -17,7 +18,10 @@ function calculAmount(solde, depot, retrait, TAUXINTERET) {
         if (solde >= retrait) {
             solde = solde !== 1000 ? 1000 : solde;
             solde -= retrait;
+            let interest = solde * TAUXINTERET;
+            solde += interest;
             historiqueOperations[i++] = `Vous avez retiré ${retrait} euros`;
+            console.log(`Intérêts annuels de ${TAUXINTERET}% ajoutés. Montant : ${interest} euros`);
             console.log(`Vous avez retiré ${retrait} euros. Nouveau solde : ${solde}`);
         } else {
             console.log("Solde insuffisant pour effectuer ce retrait.");
