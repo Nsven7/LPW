@@ -36,6 +36,7 @@ function calculAmount(solde, amount, TAUXINTERET) {
             console.log("Solde insuffisant pour effectuer ce retrait.");
         }
     }
+    console.log(historiqueOperations);
     return solde;
 }
 
