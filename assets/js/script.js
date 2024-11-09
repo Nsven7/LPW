@@ -1,28 +1,37 @@
 const TAUXINTERET = 0.03;
 let solde = 1000;
-let depot = 200;
-let retrait = 150;
-let i = 0;
+let amount = Number(prompt("Veuillez introduire votre montant").replace(/\D/g, ""));
+let answer = prompt("S'agit-il d'un dépôt ? (tapez \"oui\" ou \"non\") ").trim();
 let historiqueOperations = [];
 
-function calculAmount(solde, depot, retrait, TAUXINTERET) {
-    if (depot !== null && depot !== undefined) {
-        solde += depot;
+while (!amount) {
+    alert("Veuillez introduire un montant valide");
+    amount = Number(prompt("Veuillez introduire votre montant").replace(/\D/g, ""));
+}
+
+while (answer !== "oui" && answer !== "non") {
+    alert("Veuillez introduire une réponse valide");
+    answer = prompt("S'agit-il d'un dépôt ? (tapez \"oui\" ou \"non\") ").trim();
+}
+
+function calculAmount(solde, amount, TAUXINTERET) {
+    if (answer === "oui") {
+        solde += amount;
         let interest = solde * TAUXINTERET;
         solde += interest;
-        historiqueOperations[i++] = `Vous avez déposé : ${depot} euros`;
-        console.log(`Vous avez déposé : ${depot} euros`);
+        historiqueOperations.push(`Vous avez déposé : ${amount} euros`);
+        console.log(`Vous avez déposé : ${amount} euros`);
         console.log(`Intérêts annuels de ${TAUXINTERET}% ajoutés. Montant : ${interest} euros`);
         console.log(`Nouveau solde : ${solde}`);
     } else {
-        if (solde >= retrait) {
+        if (solde >= amount) {
             solde = solde !== 1000 ? 1000 : solde;
-            solde -= retrait;
+            solde -= amount;
             let interest = solde * TAUXINTERET;
             solde += interest;
-            historiqueOperations[i++] = `Vous avez retiré ${retrait} euros`;
+            historiqueOperations.push(`Vous avez retiré ${amount} euros`);
             console.log(`Intérêts annuels de ${TAUXINTERET}% ajoutés. Montant : ${interest} euros`);
-            console.log(`Vous avez retiré ${retrait} euros. Nouveau solde : ${solde}`);
+            console.log(`Vous avez retiré ${amount} euros. Nouveau solde : ${solde}`);
         } else {
             console.log("Solde insuffisant pour effectuer ce retrait.");
         }
@@ -30,9 +39,4 @@ function calculAmount(solde, depot, retrait, TAUXINTERET) {
     return solde;
 }
 
-// // Test Cases:
-console.log("Test 1 - Dépôt:");
-console.log(calculAmount(solde, depot, null, TAUXINTERET));
-
-console.log("\nTest 2 - Retrait:");
-console.log(calculAmount(solde, null, retrait, TAUXINTERET));
+console.log(calculAmount(solde, amount, TAUXINTERET));
