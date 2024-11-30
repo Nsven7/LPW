@@ -2,6 +2,8 @@
     --first-color: #f4f4f4;
     --second-color: #dcdcdc;
     --third-color: rgb(31, 31, 97);
+    --fourth-color: #555;
+    --fifth-color: #007BFF;
     --font-h1: 28px;
     --font-h2: 20px;
 }
@@ -11,10 +13,89 @@
 }
 
 body {
-    background-color: var(--first-color);
     font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
+section {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    margin: 20px;
+}
+
+section h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-size: 14px;
+    color: var(--fourth-color);
+    margin-bottom: 5px;
+}
+
+input[type="number"] {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input[type="number"]:focus {
+    border-color: var(--fifth-color);
+    outline: none;
+}
+
+input[type="radio"] {
+    margin-right: 8px;
+}
+
+label[for="add"], label[for="remove"] {
+    font-size: 14px;
+    color: var(--fourth-color);
+    display: inline-block;
+    margin-right: 15px;
+}
+
+button {
+    background-color: var(--fifth-color);
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:active {
+    background-color: #004085;
+}
 h1 {
     font-size: var(--font-h1);
 }
